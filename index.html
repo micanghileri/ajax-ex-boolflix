@@ -8,14 +8,15 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
         <title>Boolflix</title>
     </head>
     <body>
         <header>
+            <img src="https://lh3.googleusercontent.com/proxy/-Cg6aEdjdpZ4ly-9_8uXzWWjukEcFq_IxazfR6wAmubvWWdIRiWHBQF6Ewyab6RR8-ztriQqta9bxw_o9GI2xp0jPFmDsAhztTD84zG920hks_n0N9s" alt="netflix_logo">
             <div id="search-bar">
-                <i class="fas fa-search"></i>
                 <input type="text" id="query" placeholder="Inserisci un titolo...">
-                <button type="button" name="btn" id="cerca">Cerca</button>
+                <button type="button" name="btn" id="cerca"><i class="fas fa-search"></i></button>
             </div>
         </header>
         <main>
@@ -26,20 +27,19 @@
         <footer>
 
         </footer>
-
         <!-- handlebars -->
         <script id="entry-template" type="text/x-handlebars-template">
-        <li>
-            <h3 class="titolo">{{title}}</h3>
-            <h4 class="titolo originale">{{original_title}}</h4>
-            <span class="lingua">
-                <p>{{original_language}}</p>
-            </span>
-            <span class="voto">
-                <p>{{vote_average}}</p>
-            </span>
-        </li>
-    </script>
+            <li>
+                <h3 class="titolo">{{title}}</h3>
+                <h4 class="titolo originale">{{original_title}}</h4>
+                <span class="lingua">
+                    <p>{{original_language}}</p>
+                </span>
+                <span class="voto">
+                    <p>{{vote_average}}</p>
+                </span>
+            </li>
+        </script>
     <script src="js/script.js" charset="utf-8"></script>
     </body>
 </html>
