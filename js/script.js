@@ -1,10 +1,19 @@
 $(document).ready(function(){
-
+    // ricerca al click
     $('#cerca').click(function(){
         var query = $('#query').val();
         reset();
         insertFilm(query);
     });
+    // ricerca con tasto invio
+    $(document).keydown(function(event){
+
+        if (event.keyCode == 13 || event.which == 13){
+            var query = $('#query').val();
+            reset();
+            insertFilm(query);
+        }
+    })
 });
 
 // *****funzioni*****
@@ -66,7 +75,7 @@ function noResult(){
 };
 
 function worldFlag(langCode){
-    var lingua = ['it','en','de','pt','sv','fr','ja'];
+    var lingua = ['it','en','de','pt','sv','fr','ja','es'];
     if (lingua.includes(langCode)) {
         return '<img src="img/' + langCode + '.png">';
     } else {
