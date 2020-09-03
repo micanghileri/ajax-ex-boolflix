@@ -56,6 +56,7 @@ function printFilm(data){
     var template = Handlebars.compile(source);
     for (var i = 0; i < data.length; i++){
         var context = {
+            pic: imgScheda(data[i].poster_path),
             title: data[i].title,
             original_title: data[i].original_title,
             original_language: worldFlag(data[i].original_language),
@@ -96,6 +97,7 @@ function printSeries(data){
     var template = Handlebars.compile(source);
     for (var i = 0; i < data.length; i++){
         var context = {
+            pic: imgScheda(data[i].poster_path),
             title: data[i].name,
             original_title: data[i].original_name,
             original_language: worldFlag(data[i].original_language),
@@ -139,4 +141,12 @@ function voteStar(vote){
         }
     }
     return a;
+};
+
+function imgScheda(pic){
+    if (pic != null) {
+        return 'https://image.tmdb.org/t/p/w342' + pic;
+    } else {
+        return 'https://adriaticaindustriale.it/wp-content/uploads/2020/02/not-found.png'
+    }
 };

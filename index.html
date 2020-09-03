@@ -13,7 +13,7 @@
     </head>
     <body>
         <header>
-            <img src="https://cdn.iconscout.com/icon/free/png-512/netflix-4-569350.png" alt="netflix_logo">
+            <img src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg" alt="netflix_logo">
             <div id="search-bar">
                 <input type="text" id="query" placeholder="Inserisci un titolo...">
                 <button type="button" name="btn" id="cerca"><i class="fas fa-search"></i></button>
@@ -28,14 +28,19 @@
         <!-- handlebars -->
         <script id="entry-template" type="text/x-handlebars-template">
             <li class="scheda">
-                <h3 class="titolo">Titolo: {{title}}</h3>
-                <h4 class="titolo originale">Titolo originale: {{original_title}}</h4>
-                <span class="lingua">
-                    <p>{{{original_language}}}</p>
-                </span>
-                <span class="voto">
-                    <p>{{{vote_average}}}</p>
-                </span>
+                <div id="area-img">
+                    <img src="{{pic}}" alt="{{original_title}}" id="img-scheda">
+                </div>
+                <div id="area-txt">
+                    <h3 class="titolo">Titolo: {{title}}</h3>
+                    <h4 class="titolo originale">Titolo originale: {{original_title}}</h4>
+                    <span class="lingua">
+                        <p>{{{original_language}}}</p>
+                    </span>
+                    <span class="voto">
+                        <p>{{{vote_average}}}</p>
+                    </span>
+                </div>
             </li>
         </script>
         <script id="no-result-template" type="text/x-handlebars-template">
