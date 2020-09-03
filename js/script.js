@@ -1,45 +1,66 @@
-// Creare un layout base con una searchbar (una input e un button) in cui possiamo
-// scrivere completamente o parzialmente il nome di un film.
-// Possiamo, cliccando il bottone, cercare sull’API tutti i film che
-// contengono ciò che ha scritto l’utente.
-// Vogliamo dopo la risposta dell’API visualizzare a schermo i seguenti
-// valori per ogni film trovato:
-// Titolo
-// Titolo Originale
-// Lingua
-// Voto
-
 $(document).ready(function(){
+
     $('#cerca').click(function(){
-        var query = $('#query').val()
+        var query = $('#query').val();
+        reset();
+        insertFilm(query);
+    });
+});
 
-        $.ajax(
+// *****funzioni*****
+
+function reset(){
+    $('#risultati').empty();
+    $('#query').val('');
+};
+
+function insertFilm(data){
+    $.ajax(
+        {
+            url: 'https://api.themoviedb.org/3/search/movie',
+            method: 'GET',
+            data:
             {
-                "url":'https://api.themoviedb.org/3/search/movie',
-                "method":'GET',
-                "data": {
-                    api_key:'b71909719ea322aa41b4b92813e721e5',
-                    language:'it-IT',
-                    query: query
+                api_key: 'b71909719ea322aa41b4b92813e721e5',
+                language: 'it-IT',
+                query: data
             },
-
-            "success": function(r){
-                for (var i = 0; i < r.results.length; i++){
-                    if(r.results[i].title.includes(query) || r.results[i].original_title.includes(query)){
-                        var source = $("#entry-template").html();
-                        var template = Handlebars.compile(source);
-                        var context = r.results[i];
-                        var html = template(context);
-                        // stampo risultati
-                        $('#risultati').append(html);
-                    } else {
-                        console.log('Nessun risultato')
-                    }
+            success: function(r){
+                if(r.total_results > 0){
+                    printFilm(r.result);
+                } else {
+                    noResult();
                 }
+
             },
-            "error": function(){
+            error: function(){
                 alert('Errore');
             }
-        })
-    })
-});
+        }
+    );
+};
+
+function printFilm(data){
+    var source = $("#entry-template").html();
+    var template = Handlebars.compile(source);
+    for (var i = 0; i < data.length; i++){
+        var context = {
+            title: data[i].title,
+            original_title: data[i].original_title,
+            original_language: data[i].original_language,
+            vote_average: data[i].vote_average,
+        };
+        var html = template(context);
+        $('#risultati').append(html);
+    }
+};
+
+function noResult(){
+    var source = $("#no-result-template").html();
+    var template = Handlebars.compile(source);
+    var context = {
+        noResult: 'Non ci sono risultati'
+    };
+    var html = template(context);
+    $('#risultati').append(html);
+};
