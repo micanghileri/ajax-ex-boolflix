@@ -5,39 +5,46 @@
 }
 
 body {
-    background-color: #000000;
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(19,19,19,1) 52%, rgba(19,19,19,1) 100%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: fill;
     font-family: 'Nunito', sans-serif;
-    margin-bottom: 100px;
+    height: 100vh;
 }
 
 header {
-    margin-top: -10px;
     height: 80px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     position: fixed;
     z-index: 3;
-    background-color: #000000;
+    background-color: #131313;
     width: 100vw;
     box-shadow: 0 0 25px #000000;
 }
 
+main {
+    height: 100%;
+    overflow: scroll;
+}
+
 header img {
     width: 100px;
-    margin: 0 30px;
+    margin: 0 40px;
 }
 
 #search-bar input {
-    width: 300px;
-    height: 30px;
-    background-color: #ffffff;
+    width: 350px;
+    height: 35px;
+    background-color: #f2f2f2;
     border-radius: 7px 0 0 7px;
-    border: 2px solid #ffffff;
+    border: 2px solid #f2f2f2;
     padding: 0 10px;
     color: #000000;
     font-size: 13px;
-    opacity: 50%;
 }
 
 #search-bar input:focus {
@@ -45,19 +52,26 @@ header img {
 }
 
 #cerca {
-    width: 50px;
-    height: 30px;
-    background-color: #ffffff;
-    border: 1px solid #ffffff;
+    width: 55px;
+    height: 35px;
+    background-color: #f44335;
+    color: #b30000;
+    border: 1px solid #f44335;
     border-radius: 0 7px 7px 0;
     margin-left: -4px;
-    opacity: 50%;
+    margin-right: 40px;
+    filter: grayscale(100);
+    transition: filter 0.5s;
+}
+
+#cerca:hover {
+    filter: grayscale(0);
 }
 
 #risultati {
     font-size: 13px;
     color: #ffffff;
-    margin: 10px 30px 0 30px;
+    margin: 0 30px 70px 70px;
     padding-top: 90px;
     display: flex;
     flex-wrap: wrap;
@@ -65,42 +79,42 @@ header img {
 }
 
 .scheda {
-    background-color: #f2f2f2;
-    border-radius: 10px;
+    background-image: url('https://assets.website-files.com/5bfd1275cc56e15ce750b18e/5c289afb9a15757152893aa7_70.%20Honeydew.jpg');
+    border-radius: 15px;
     margin: 15px 15px 0 0;
     width: 330px;
-    height: 190px;
+    height: 130px;
+    font-size: 10px;
     list-style: none;
     position: relative;
     color: #262626;
-    border-bottom: 3px solid #f44335;
+    border-bottom: 2px solid #f44335;
     cursor: pointer;
     display: flex;
-    overflow: scroll;
-    opacity: 50%;
+    overflow: hidden;
+    transition: transform 0.4s;
 }
 
 .scheda:hover {
     transform: scale(1.2);
     z-index: 1;
-    opacity: 100%;
-    box-shadow: 0 0 30px #000000;
+    box-shadow: 0 0 100px #000000;
 }
 
 #area-img {
     width: 100px;
-    background-color: red;
-    margin-right: 20px;
     object-fit: cover;
 }
 
 #img-scheda {
     height: 100%;
     object-fit: fill;
+    border-radius: 0 15px 0 0;
 }
 
 #area-txt {
     padding: 10px 10px 10px 20px;
+    overflow: scroll;
 }
 
 .disabled-star {
