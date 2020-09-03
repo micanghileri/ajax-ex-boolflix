@@ -4,6 +4,7 @@ $(document).ready(function(){
         var query = $('#query').val();
         reset();
         insertFilm(query);
+        insertSeries(query);
     });
     // ricerca con tasto invio
     $(document).keydown(function(event){
@@ -12,6 +13,7 @@ $(document).ready(function(){
             var query = $('#query').val();
             reset();
             insertFilm(query);
+            insertSeries(query);
         }
     })
 });
@@ -23,6 +25,7 @@ function reset(){
     $('#query').val('');
 };
 
+// ***film****
 function insertFilm(data){
     $.ajax(
         {
@@ -40,7 +43,6 @@ function insertFilm(data){
                 } else {
                     noResult();
                 }
-
             },
             error: function(){
                 alert('Errore');
@@ -56,6 +58,46 @@ function printFilm(data){
         var context = {
             title: data[i].title,
             original_title: data[i].original_title,
+            original_language: worldFlag(data[i].original_language),
+            vote_average: voteStar(data[i].vote_average),
+        };
+        var html = template(context);
+        $('#risultati').append(html);
+    }
+};
+// ****serie tv*****
+function insertSeries(data){
+    $.ajax(
+        {
+            url: 'https://api.themoviedb.org/3/search/tv',
+            method: 'GET',
+            data:
+            {
+                api_key: 'b71909719ea322aa41b4b92813e721e5',
+                language: 'it-IT',
+                query: data
+            },
+            success: function(r){
+                if(r.total_results > 0){
+                    printSeries(r.results);
+                } else {
+                    noResult();
+                }
+            },
+            error: function(){
+                alert('Errore');
+            }
+        }
+    );
+};
+
+function printSeries(data){
+    var source = $("#entry-template").html();
+    var template = Handlebars.compile(source);
+    for (var i = 0; i < data.length; i++){
+        var context = {
+            title: data[i].name,
+            original_title: data[i].original_name,
             original_language: worldFlag(data[i].original_language),
             vote_average: voteStar(data[i].vote_average),
         };
