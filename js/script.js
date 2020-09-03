@@ -27,7 +27,7 @@ function insertFilm(data){
             },
             success: function(r){
                 if(r.total_results > 0){
-                    printFilm(r.result);
+                    printFilm(r.results);
                 } else {
                     noResult();
                 }
