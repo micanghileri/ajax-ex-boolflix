@@ -48,7 +48,7 @@ function printFilm(data){
             title: data[i].title,
             original_title: data[i].original_title,
             original_language: worldFlag(data[i].original_language),
-            vote_average: data[i].vote_average,
+            vote_average: voteStar(data[i].vote_average),
         };
         var html = template(context);
         $('#risultati').append(html);
@@ -72,4 +72,20 @@ function worldFlag(langCode){
     } else {
         return langCode;
     }
+};
+
+function voteStar(vote){
+    var activeStar = '<i class="fas fa-star active-star"></i>';
+    var disabledStar = '<i class="fas fa-star disabled-star"></i>';
+    var vote = Math.round(vote / 2);
+    var a = '';
+    for (var i = 0; i < 5; i++) {
+        if (vote > 0) {
+            a += activeStar;
+            vote -= 1;
+        } else {
+            a += disabledStar;
+        }
+    }
+    return a;
 };
