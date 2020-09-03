@@ -20,23 +20,21 @@
             </div>
         </header>
         <main>
-            <ul id="risultati">
-
-            </ul>
+            <ul id="risultati"></ul>
         </main>
         <footer>
 
         </footer>
         <!-- handlebars -->
         <script id="entry-template" type="text/x-handlebars-template">
-            <li>
-                <h3 class="titolo">{{title}}</h3>
-                <h4 class="titolo originale">{{original_title}}</h4>
+            <li class="scheda">
+                <h3 class="titolo">Titolo: {{title}}</h3>
+                <h4 class="titolo originale">Titolo originale: {{original_title}}</h4>
                 <span class="lingua">
-                    <p>{{original_language}}</p>
+                    <p>{{{original_language}}}</p>
                 </span>
                 <span class="voto">
-                    <p>{{vote_average}}</p>
+                    <p>Voto: {{vote_average}}</p>
                 </span>
             </li>
         </script>

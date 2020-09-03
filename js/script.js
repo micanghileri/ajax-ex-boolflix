@@ -47,7 +47,7 @@ function printFilm(data){
         var context = {
             title: data[i].title,
             original_title: data[i].original_title,
-            original_language: data[i].original_language,
+            original_language: worldFlag(data[i].original_language),
             vote_average: data[i].vote_average,
         };
         var html = template(context);
@@ -63,4 +63,13 @@ function noResult(){
     };
     var html = template(context);
     $('#risultati').append(html);
+};
+
+function worldFlag(langCode){
+    var lingua = ['it','en','de','pt','sv','fr','ja'];
+    if (lingua.includes(langCode)) {
+        return '<img src="img/' + langCode + '.png">';
+    } else {
+        return langCode;
+    }
 };

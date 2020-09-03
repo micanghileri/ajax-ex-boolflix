@@ -11,7 +11,6 @@ body {
 
 header {
     height: 80px;
-    width: 100vw;
     display: flex;
     align-items: center;
 }
@@ -44,5 +43,29 @@ header img {
 #risultati {
     font-size: 13px;
     color: #ffffff;
-    margin: 10px 0 0 30px;
+    margin: 10px 30px 0 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.scheda {
+    background-color: lightgrey;
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin: 15px 20px 0 0;
+    width: 200px;
+    list-style: none;
+    position: relative;
+}
+
+.lingua {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+}
+
+.lingua img {
+    width: 20px;
+    border: 3px solid #ffffff;
+    border-radius: 50px;
 }
