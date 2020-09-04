@@ -5,25 +5,20 @@
 }
 
 body {
-    background: rgb(0,0,0);
-    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(19,19,19,1) 52%, rgba(19,19,19,1) 100%);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: fill;
+    background-color: #151515;
     font-family: 'Nunito', sans-serif;
     height: 100vh;
 }
 
 header {
-    height: 80px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: fixed;
-    z-index: 3;
-    background-color: #131313;
+    z-index: 999;
+    background-color: #000000;
     width: 100vw;
-    box-shadow: 0 0 25px #000000;
 }
 
 main {
@@ -79,55 +74,83 @@ header img {
 }
 
 .scheda {
-    background-image: url('https://assets.website-files.com/5bfd1275cc56e15ce750b18e/5c289afb9a15757152893aa7_70.%20Honeydew.jpg');
-    border-radius: 15px;
-    margin: 15px 15px 0 0;
-    width: 330px;
-    height: 130px;
+    background-color: #000000;
+    margin: 0 7px 30px 0;
+    width: 215px;
+    height: 340px;
     font-size: 10px;
     list-style: none;
     position: relative;
     color: #262626;
-    border-bottom: 2px solid #f44335;
     cursor: pointer;
     display: flex;
     overflow: hidden;
-    transition: transform 0.4s;
+    transition: transform 0.2s;
 }
 
 .scheda:hover {
     transform: scale(1.2);
-    z-index: 1;
-    box-shadow: 0 0 100px #000000;
+    z-index: 10;
+    box-shadow: 0 0 20px #000000;
+}
+
+.scheda:hover > #area-img {
+    opacity: 20%;
+}
+
+.scheda:hover > #area-txt {
+    opacity: 100%;
 }
 
 #area-img {
-    width: 100px;
+    width: 100%;
     object-fit: cover;
+    transition: opacity 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #img-scheda {
     height: 100%;
     object-fit: fill;
-    border-radius: 0 15px 0 0;
+    position: absolute;
 }
 
 #area-txt {
-    padding: 10px 10px 10px 20px;
+    color: #ffffff;
     overflow: scroll;
+    width: 90%;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0%;
+    transition: opacity 0.7s;
 }
 
 .disabled-star {
     opacity: 20%;
+    margin-top: 10px;
 }
 
 .active-star {
     color: #F44335;
+    margin-top: 10px;
 }
 
+.lingua {
+    position: absolute;
+    bottom: 3px;
+    right: 4px;
+}
+
+
 .lingua img {
-    margin: 10px 0;
-    width: 20px;
-    border: 3px solid #ffffff;
+    width: 15px;
+    border: 2px solid #ffffff;
     border-radius: 50px;
+    position: absolute;
+    bottom: 3px;
+    right: 4px;
 }
